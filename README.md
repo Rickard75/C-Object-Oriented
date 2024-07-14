@@ -1,5 +1,5 @@
 Useful recommendations and notes:
-- add files in small packets (big loading could lead to troubles)+
+- add files in small packets (big loading could lead to troubles)
 - master is the default branch when 'git init' is launched
 
 To start git version control manipulation over a directory and its files:
