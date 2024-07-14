@@ -1,0 +1,2 @@
+compilation: g++ -Wall -o dump1 *.cpp
+execution: ./dump1 ../../particle_events.txt
