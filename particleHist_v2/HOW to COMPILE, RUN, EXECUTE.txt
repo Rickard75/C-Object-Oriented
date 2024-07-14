@@ -1,0 +1,17 @@
+COMPILARE, ESEGUIRE, RUNNARE CODICE + ROOT
+Sia "path" il percorso che contiene i codici:
+
+// compilare
+path> g++ -Wall -o hist2 *.cc `root-config --cflags --libs`
+path> ./hist2 input ../particle_events.txt
+
+// creazione file "hist.root"
+
+// aprire file root senza intestazione
+path> root -l hist.root
+
+// mostrare contenuto del file
+root> .ls
+// mostrare istogrammi
+K0->Draw()
+Lambda0->Draw()

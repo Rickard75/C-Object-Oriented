@@ -1,0 +1,15 @@
+EventSource è padre di
+    -EventReadFromFile
+    -EventSim
+
+AnalysisSteering è padre di 
+    -EventDump
+    -ParticleMass
+
+
+MassMean si occupa dei calcoli
+AnalysisInfo è l'interfaccia dell'oggetto creato dalla factory
+SourceFactory è la factory che crea l'evento con input le informazioni AnalysisInfo
+Constants contiene le costanti del problema
+Utilities contiene le formule del problema
+mass.cc decide che particella è individuata
