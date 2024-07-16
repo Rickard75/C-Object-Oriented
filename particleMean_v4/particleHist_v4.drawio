@@ -1,9 +1,93 @@
-<mxfile host="app.diagrams.net" modified="2024-07-16T09:02:54.176Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" version="24.6.5" etag="dfvBilfYwazXVj4qDZPv" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-16T09:07:18.392Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="2FtQqxTWRE1gdOhrGXhR" version="24.6.5" type="github">
   <diagram name="Pagina-1" id="wSfcJ0eLxWlFNtmCoV92">
-    <mxGraphModel>
+    <mxGraphModel dx="2883" dy="505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-1" value="SourceFactory" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="130" y="360" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-3" value="MassMean" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-260" y="550" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-4" value="EventSource" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="130" y="440" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-5" value="EventSim" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="230" y="550" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-6" value="EventReadFromFile" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="30" y="550" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-7" value="EventDump" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="690" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-8" value="Event" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-260" y="480" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-9" value="AnalysisInfo" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-260" y="400" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-10" value="AnalysisSteering" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-610" y="500" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-11" value="AnalysisFactory&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-630" y="360" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-12" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="1GMr9n0HFFHIPWMANCaE-18" target="1GMr9n0HFFHIPWMANCaE-10">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="-710" y="620" as="sourcePoint" />
+            <mxPoint x="-330" y="600" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-710" y="690" />
+              <mxPoint x="-710" y="600" />
+              <mxPoint x="-550" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-13" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="1GMr9n0HFFHIPWMANCaE-7">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="-490" y="600" as="sourcePoint" />
+            <mxPoint x="-550" y="550" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-380" y="600" />
+              <mxPoint x="-549" y="600" />
+              <mxPoint x="-549" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-14" value="AbsFactory" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-606" y="390" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-15" value="ARCHITETTURA&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;ParticleMass&lt;/b&gt; analizza &lt;b&gt;un singolo&lt;/b&gt; evento e si occupa di calcolare la massa invariante, cioè stabilisce il decadimento verificatosi&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;EventDump&lt;/b&gt; stampa i dati di &lt;b&gt;un&lt;/b&gt; evento&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;AnalysisSteering&lt;/b&gt; analizza l&#39;evento nelle tre fasi beginJob(), process(), endJob() a partire dalle informazioni passate da riga di comando (e.g.&amp;nbsp;./main input ../bragg_events.dat plot hh.root)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;EventSource&lt;/b&gt;&amp;nbsp;gestisce la sorgente dei dati manipolando di fatto la funzione get()&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-490" y="60" width="570" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-16" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="1GMr9n0HFFHIPWMANCaE-5" target="1GMr9n0HFFHIPWMANCaE-4">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="260" y="560" as="sourcePoint" />
+            <mxPoint x="180" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="290" y="520" />
+              <mxPoint x="185" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-17" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="1GMr9n0HFFHIPWMANCaE-4">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="95" y="550" as="sourcePoint" />
+            <mxPoint x="-10" y="490" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="95" y="520" />
+              <mxPoint x="185" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-18" value="ParticleMass" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-950" y="690" width="470" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="1GMr9n0HFFHIPWMANCaE-21" value="&lt;div style=&quot;color: rgb(204, 204, 204); background-color: rgb(31, 31, 31); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space: pre;&quot;&gt;&lt;span style=&quot;color: #4ec9b0;&quot;&gt;ParticleMass&lt;/span&gt;::&lt;span style=&quot;color: #dcdcaa;&quot;&gt;ParticleMass&lt;/span&gt;(&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #4ec9b0;&quot;&gt;AnalysisInfo&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4;&quot;&gt;*&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;info&lt;/span&gt;)&lt;/div&gt;&lt;div style=&quot;color: rgb(204, 204, 204); background-color: rgb(31, 31, 31); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #4ec9b0;&quot;&gt;ParticleMass&lt;/span&gt;::&lt;span style=&quot;color: #dcdcaa;&quot;&gt;~&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;ParticleMass&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #4ec9b0;&quot;&gt;ParticleMass&lt;/span&gt;::&lt;span style=&quot;color: #dcdcaa;&quot;&gt;beginJob&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #4ec9b0;&quot;&gt;ParticleMass&lt;/span&gt;::&lt;span style=&quot;color: #dcdcaa;&quot;&gt;endJob&lt;/span&gt;()&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #4ec9b0;&quot;&gt;ParticleMass&lt;/span&gt;::&lt;span style=&quot;color: #dcdcaa;&quot;&gt;update&lt;/span&gt;(&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #4ec9b0;&quot;&gt;Event&lt;/span&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;ev&lt;/span&gt;)&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;void&lt;/span&gt; &lt;span style=&quot;color: #4ec9b0;&quot;&gt;ParticleMass&lt;/span&gt;::&lt;span style=&quot;color: #dcdcaa;&quot;&gt;pCreate&lt;/span&gt;(&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #4ec9b0;&quot;&gt;string&lt;/span&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;name&lt;/span&gt;,&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;   &lt;span style=&quot;color: #569cd6;&quot;&gt;double&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;min_mass&lt;/span&gt;, &lt;span style=&quot;color: #569cd6;&quot;&gt;double&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;max_mass&lt;/span&gt;)&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="1GMr9n0HFFHIPWMANCaE-18">
+          <mxGeometry y="26" width="470" height="144" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
