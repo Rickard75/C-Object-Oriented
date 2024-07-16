@@ -18,7 +18,9 @@ template <class T>
 T* Singleton<T>::instance() {
   if ( verbose ) std::cout << "Singleton::instance " << std::endl; 
   // the object is created only once, the first time "instance()" is called
+  // every next call will return the same object
   static T* obj = new T;
+  // return the object pointer
   return obj;
 }
 
