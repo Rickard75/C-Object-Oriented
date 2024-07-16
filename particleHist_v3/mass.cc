@@ -27,8 +27,8 @@ double mass(const Event &ev) {
     // get particle pointer
     const Event::part_ptr party = ev.get_particle(i); //single particle pointer = PoP[i]
     // update momentum sums
-    sum_py += party->px;
-    sum_px += party->py;
+    sum_px += party->px;
+    sum_py += party->py;
     sum_pz += party->pz;
     // update energy sums, for K0 and Lambda0 hypotheses:
     // pion mass for K0,
