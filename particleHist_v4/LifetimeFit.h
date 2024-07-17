@@ -17,8 +17,6 @@ class LifetimeFit {
   void compute();                   // compute mean and rms
 
   unsigned int get_nAcc() const;                // return number of accepted events
-  double get_min() const;
-
  private:
 
   double min_mass; // min mass
