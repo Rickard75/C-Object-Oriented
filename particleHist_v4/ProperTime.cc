@@ -23,6 +23,7 @@ void ProperTime::update( const Event& ev ) {
   decay_type   = unknown;
   total_energy = -1.0;
   particle_mass   = -1.0;
+  particle_time = -1.0;
   // code to compute total energy and invariant mass for the two mass hypotheses for the decay products
   // initializing variables
   int np = ev.get_nParticles();
@@ -65,6 +66,14 @@ void ProperTime::update( const Event& ev ) {
     particle_mass = mL0;
   }
 
+  // compute proper time
+  
+  double d = sqrt(pow(ev.get_x(),2)+pow(ev.get_y(),2)+pow(ev.get_z(),2));
+  double m = particle_mass;
+  double p = sqrt(pow(total_energy,2)-pow(m,2));
+  double c = Constants::lightVelocity;
+  particle_time = d*m/(p*c);
+
   return;
 
 }
@@ -89,6 +98,12 @@ double ProperTime::get_mass() {
   // check for new event and return result
   check();
   return particle_mass;
+}
+
+double ProperTime::decay_time() {
+  // check for new event and return result
+  check();
+  return particle_time;
 }
 
 /*

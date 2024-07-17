@@ -25,6 +25,8 @@ class ProperTime: public Singleton<ProperTime>,
   double get_energy();
   // return particle mass
   double get_mass();
+  // return particle proper time
+  double decay_time();
 
  private:
 
@@ -43,6 +45,8 @@ class ProperTime: public Singleton<ProperTime>,
   double total_energy;
   // particle mass
   double particle_mass;
+  // particle proper time
+  double particle_time;
 
 };
 
