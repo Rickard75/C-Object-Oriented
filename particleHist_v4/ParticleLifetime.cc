@@ -14,23 +14,19 @@
 #include "Event.h"
 #include "AnalysisInfo.h"
 #include "AnalysisFactory.h"
+#include "ParticleReco.h"
 
 // particleHist_v4 headers
 #include "ParticleLifetime.h"
-#include "ParticleReco.h"
 #include "ProperTime.h"
 #include "LifetimeFit.h"
 
-
-
-// Forward declaration of external function to compute invariant mass
-double mass(const Event& ev);
 using namespace std;
 
 // concrete factory to create a ParticleLifetime analyzer
 class ParticleLifetimeFactory: public AnalysisFactory::AbsFactory{
     public:
-        ParticleLifetimeFactory(): AnalysisFactory::AbsFactory("plot"){}
+        ParticleLifetimeFactory(): AnalysisFactory::AbsFactory("time"){}
         AnalysisSteering* create(const AnalysisInfo* info) override{
             return new ParticleLifetime( info );
         }
@@ -58,9 +54,10 @@ void ParticleLifetime::endJob() {
 
     // creation of ROOT file
     TDirectory* currentDir = gDirectory;
-    TFile* file = new TFile(aInfo->value("plot").c_str(), "CREATE");
-    // creation of pointer to histogram object with name given by what follows the key "plot" in CREATE mode
+    TFileProxy* file = new TFileProxy(aInfo->value("time").c_str(), "RECREATE");
+    // creation of pointer to histogram object with name given by what follows the key "time" in RECREATE mode
     // CREATE mode: new file created or overwriting of existing one
+    // RECREATE mode:
 
     for (Particle* p: pList){
         // get Particle curve informations: mean, rms, graph
@@ -70,8 +67,7 @@ void ParticleLifetime::endJob() {
         tMean->compute(); // now does nothing
         // print results
         cout << "Particle: " << p->name << endl;
-        //cout << "Mean: " << pMean->get_mean() << endl;
-        //cout << "RMS: "  << pMean->get_rms()  << endl;
+        
         cout << "Number of accepted events: " << tMean->get_nAcc() << endl;
 
         hMean->Write();
@@ -105,7 +101,7 @@ void ParticleLifetime::update(const Event& ev){
 void ParticleLifetime::pCreate(const string& name, double min_mass, double max_mass,double minTime, double maxTime){
 
     // naming histogram and its axis
-    string labels = ";Energy [MeV/c^2];#"; // axis labels
+    string labels = ";Time [ns];#"; // axis labels
     string long_name = "time" + name;
     const char* hName = long_name.c_str(); // pointer to long_name
     string title = hName + labels;
