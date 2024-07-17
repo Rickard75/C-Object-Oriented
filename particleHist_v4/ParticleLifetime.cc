@@ -28,7 +28,7 @@ class ParticleLifetimeFactory: public AnalysisFactory::AbsFactory{
         }
 };
 
-ParticleLifetimeFactory pmf;
+//ParticleLifetimeFactory pmf; already declared in ParticleMass.cc
 
 ParticleLifetime::ParticleLifetime(const AnalysisInfo* info): 
     AnalysisSteering(info){
