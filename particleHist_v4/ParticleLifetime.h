@@ -2,6 +2,7 @@
 #define ParticleLifetime_h
 
 #include "AnalysisSteering.h"
+#include "LifetimeFit.h"
 #include "TH1F.h"
 #include "util/include/ActiveObserver.h"
 
@@ -38,16 +39,16 @@ class ParticleLifetime: public AnalysisSteering,
     private:
         // particle object
         struct Particle {
-            std::string name;   // element name
-            MassMean*   pMean;  // statistic object
-            TH1F*       hMean;  // graph
+            std::string  name;   // element name
+            LifetimeFit* tMean;  // statistic object
+            TH1F*        hMean;  // graph
         };
 
         // list of pointers to ParticleCurve object(2 since only K0 and Lambda0)
         std::vector<Particle*> pList;
 
         // creates graph and values to store for a single Particle Curve
-        void pCreate (const std::string& name, double min_mass, double max_mass);
+        void pCreate (const std::string& name, double min_mass, double max_mass, double timeMin, double timeMax);
         
 };
 

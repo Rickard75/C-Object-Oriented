@@ -1,19 +1,27 @@
-#include "ParticleLifetime.h"
-#include "ParticleReco.h"
-
-#include "Event.h"
-#include "AnalysisInfo.h"
-#include "AnalysisFactory.h"
-#include "MassMean.h"
-
-#include "TH1F.h"
-#include "TFile.h"
-#include "TDirectory.h"
-
+// general C++ libraries
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <cmath>
+
+// ROOT libraries
+#include "TH1F.h"
+#include "TFile.h"
+#include "TDirectory.h"
+#include "util/include/TFileProxy.h"
+
+// particleHist_v3 headers
+#include "Event.h"
+#include "AnalysisInfo.h"
+#include "AnalysisFactory.h"
+
+// particleHist_v4 headers
+#include "ParticleLifetime.h"
+#include "ParticleReco.h"
+#include "ProperTime.h"
+#include "LifetimeFit.h"
+
+
 
 // Forward declaration of external function to compute invariant mass
 double mass(const Event& ev);
@@ -28,7 +36,7 @@ class ParticleLifetimeFactory: public AnalysisFactory::AbsFactory{
         }
 };
 
-//ParticleLifetimeFactory pmf; already declared in ParticleMass.cc
+ParticleLifetimeFactory ptf; // global variable to hold an instance of the factory
 
 ParticleLifetime::ParticleLifetime(const AnalysisInfo* info): 
     AnalysisSteering(info){
@@ -40,8 +48,8 @@ ParticleLifetime::~ParticleLifetime(){
 // function to be called at execution start
 void ParticleLifetime::beginJob() {
     pList.reserve(2);
-    pCreate( "K0", 0.495, 0.500);
-    pCreate( "Lambda0", 1.115, 1.116);
+    pCreate( "K0", 0.495, 0.500, 10.0, 500.0);
+    pCreate( "Lambda0", 1.115, 1.116, 10.0, 1000.0);
     return;
 }
 
@@ -56,15 +64,15 @@ void ParticleLifetime::endJob() {
 
     for (Particle* p: pList){
         // get Particle curve informations: mean, rms, graph
-        MassMean*   pMean = p->pMean;
+        LifetimeFit*   tMean = p->tMean;
         TH1F*       hMean = p->hMean;
         // compute results
-        pMean->compute();
+        tMean->compute(); // now does nothing
         // print results
         cout << "Particle: " << p->name << endl;
-        cout << "Mean: " << pMean->get_mean() << endl;
-        cout << "RMS: "  << pMean->get_rms()  << endl;
-        cout << "Number of accepted events: " << pMean->get_nAcc() << endl;
+        //cout << "Mean: " << pMean->get_mean() << endl;
+        //cout << "RMS: "  << pMean->get_rms()  << endl;
+        cout << "Number of accepted events: " << tMean->get_nAcc() << endl;
 
         hMean->Write();
         
@@ -82,11 +90,11 @@ void ParticleLifetime::endJob() {
 // function to be called for each event
 void ParticleLifetime::update(const Event& ev){
     for (Particle* p: pList) {
-        if(p->pMean->add(ev)){
+        if(p->tMean->add(ev)){
             // handling Singleton and getting invariant mass
-            static ParticleReco* pr = ParticleReco::instance();
-            double mass = pr->get_mass();
-            p->hMean->Fill(mass);
+            static ProperTime* pt = ProperTime::instance();
+            double my_time = pt->ProperTime::get_time();
+            p->hMean->Fill(my_time);
         }
     }
     
@@ -94,11 +102,11 @@ void ParticleLifetime::update(const Event& ev){
 }
 
 // creates graph and values to store for a single Particle histogram
-void ParticleLifetime::pCreate(const string& name, double min_mass, double max_mass){
+void ParticleLifetime::pCreate(const string& name, double min_mass, double max_mass,double minTime, double maxTime){
 
     // naming histogram and its axis
     string labels = ";Energy [MeV/c^2];#"; // axis labels
-    string long_name = "mass" + name;
+    string long_name = "time" + name;
     const char* hName = long_name.c_str(); // pointer to long_name
     string title = hName + labels;
     const char* hTitle = title.c_str();
@@ -109,8 +117,8 @@ void ParticleLifetime::pCreate(const string& name, double min_mass, double max_m
     // creating TH1F histogram and statistical object
     Particle* p = new Particle;
     p-> name = name;
-    p->pMean = new MassMean(min_mass, max_mass);
-    p->hMean = new TH1F(hName, hTitle, nBins, min_mass, max_mass);
+    p->tMean = new LifetimeFit(min_mass, max_mass);
+    p->hMean = new TH1F(hName, hTitle, nBins, minTime, maxTime);
     pList.push_back( p );
 
     return;
