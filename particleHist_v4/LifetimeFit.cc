@@ -29,11 +29,6 @@ bool LifetimeFit::add( const Event& ev ) {
   double my_mass = pr->get_mass();
   // check for mass being in range
   if (min_mass <= my_mass && my_mass <= max_mass){
-    my_mass -= get_min();
-    
-    // update number of events and sums
-    sum_mass += my_mass;
-    sum_sqr += my_mass*my_mass;
     nAcc++;
     return true;
   }
@@ -43,12 +38,6 @@ bool LifetimeFit::add( const Event& ev ) {
 
 // compute mean and rms
 void LifetimeFit::compute() {
-  double my_mean = (this->sum_mass*1.0)/(this->nAcc);
-  this->mean = my_mean;
-  this->rms = sqrt((this->sum_sqr*1.0)/(this->nAcc)-pow(my_mean, 2.0));
-
-  // rescaling
-  this->mean += this->min_mass;
 }
 
 // return number of selected events
