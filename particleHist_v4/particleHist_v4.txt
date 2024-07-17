@@ -49,8 +49,6 @@ In "ParticleMass.cc" name the histogram as "mass" followed by the name
 given as first parameter in the "pCreate" function.
 
 ***
--------------------------------I'M CODING HERE-----------------------------
----------------------Compiles correctly until here-----------------------
 Modify the "main" function and replace the event loop with a call to 
 the "run" function in the "EventSource".
 
@@ -93,6 +91,7 @@ is inside the range and update the number of accepted events accordingly;
 the function "compute" can be left empty.
 
 ***
+---------------------Compiles correctly until here-----------------------
 In "ParticleLifetime.h" replace the pointer to "MassMean" with a pointer
 to "LifetimeFit" in the "Particle" struct and add two more parameters
 "timeMin" and "timeMax" to the "pCreate" function, for min. and max.
@@ -104,6 +103,7 @@ leave the same operations as in "ParticleMass" but the writing of mean
 and rms (leave the call to the "compute" function, that does not anything
 for now, it will be implemented in the next version); get from the 
 "AnalysisInfo" object the name of the output ROOT file.
+-------------------------------I'M CODING HERE-----------------------------
 In the "pCreate" function name the histogram as "time" followed by the name
 given as first parameter in the "pCreate" function and use the min. and max.
 decay times as range.
