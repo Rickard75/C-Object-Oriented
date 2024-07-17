@@ -26,7 +26,7 @@ class ProperTime: public Singleton<ProperTime>,
   // return particle mass
   double get_mass();
   // return particle proper time
-  double decay_time();
+  double get_time();
 
  private:
 

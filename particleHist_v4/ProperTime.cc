@@ -100,7 +100,7 @@ double ProperTime::get_mass() {
   return particle_mass;
 }
 
-double ProperTime::decay_time() {
+double ProperTime::get_time() {
   // check for new event and return result
   check();
   return particle_time;
