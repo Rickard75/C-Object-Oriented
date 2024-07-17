@@ -11,11 +11,7 @@ LifetimeFit::LifetimeFit( double min, double max ):
  // initializations
  min_mass(min),
  max_mass(max),
- nAcc(0), 
- sum_mass(0.0), 
- sum_sqr(0.0), 
- mean(0.0), 
- rms(0.0) {
+ nAcc(0) {
 }
 
 // destructor
@@ -43,17 +39,6 @@ void LifetimeFit::compute() {
 // return number of selected events
 unsigned int LifetimeFit::get_nAcc() const{
   return nAcc;
-}
-
-// return mean, rms and min
-double LifetimeFit::get_mean() const{
-  return mean;
-}
-double LifetimeFit::get_rms() const{
-  return rms;
-}
-double LifetimeFit::get_min() const {
-  return min_mass;
 }
 
 /*
