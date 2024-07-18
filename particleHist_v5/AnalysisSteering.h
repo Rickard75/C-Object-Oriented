@@ -30,6 +30,7 @@ class AnalysisSteering: public ActiveObserver<AnalysisInfo::AnalysisStatus> {
   virtual void beginJob() = 0;
   // function to be called at execution end
   virtual void   endJob() = 0;
+  // removed process function
 
 };
 
