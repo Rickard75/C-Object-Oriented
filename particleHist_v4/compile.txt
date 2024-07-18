@@ -4,4 +4,5 @@ c++ -Wall -I. -I ${CORSOCXX_UTIL} `root-config --cflags` -o main *cc `root-confi
 
 In WSL (Windows Subsystem for Linux) use the following command:
 g++ -Wall -I. -I ../../ `root-config --cflags` -o hist4 *cc `root-config --libs`
-./hist4 input ../particle_events.txt
+./hist4 input ../particle_events.txt time tt.root
+./hist4 input ../particle_events.txt plot hist_input.root time hist_input.root
