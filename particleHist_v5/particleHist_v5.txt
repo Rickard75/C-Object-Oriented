@@ -88,8 +88,8 @@ main                   modify Hist_v4 or copy braggPlot_v5
 ********* final list of classes   *********
 
                        .h                            .cc
--AnalysisInfo           copy   braggPlot_v5           copy   Hist_v4
--AnalysisSteering       copy   braggPlot_v5           copy   braggPlot_v5
+AnalysisInfo           copy   braggPlot_v5           copy   Hist_v4
+AnalysisSteering       copy   braggPlot_v5           copy   braggPlot_v5
 AnalysisFactory        copy   Hist_v4                copy   Hist_v4
 SourceFactory          copy   Hist_v4                copy   Hist_v4
 Event                  copy   Hist_v4                copy   Hist_v4
