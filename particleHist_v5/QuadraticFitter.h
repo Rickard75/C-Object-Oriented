@@ -3,7 +3,7 @@
 
 class QuadraticFitter {
 
-  // class to fit y = a+bx+cx^2
+  // Class to fit quadratic function y = a+bx+cx^2
 
  public:
 

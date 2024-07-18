@@ -1,5 +1,6 @@
 #include "QuadraticFitter.h"
 
+// constructor
 QuadraticFitter::QuadraticFitter():
  sumx0y0( 0.0 ),
  sumx1y0( 0.0 ),
@@ -12,11 +13,11 @@ QuadraticFitter::QuadraticFitter():
   reset();
 }
 
-
+// destructor
 QuadraticFitter::~QuadraticFitter() {
 }
 
-
+// add a point
 void QuadraticFitter::add( double x, double y ) {
   outdated = true;
   double x2 = x  * x;
@@ -33,25 +34,25 @@ void QuadraticFitter::add( double x, double y ) {
   return;
 }
 
-
+// get coefficient a
 double QuadraticFitter::a() {
   if ( outdated ) update();
   return ac;
 }
 
-
+// get coefficient b
 double QuadraticFitter::b() {
   if ( outdated ) update();
   return bc;
 }
 
-
+// get coefficient c
 double QuadraticFitter::c() {
   if ( outdated ) update();
   return cc;
 }
 
-
+// clear memory
 void QuadraticFitter::clear() {
   sumx0y0 = 0.0;
   sumx1y0 = 0.0;
