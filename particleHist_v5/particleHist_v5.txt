@@ -1,7 +1,8 @@
 ---- Modify Hist_v4 and use dispatcher&observers to handle begin/end job ----
 
 **** Part A ****
-
+------------------------------CODING HERE------------------------------------
+--------------------COMPILES PERFECTLY UNTIL HERE----------------------------
 ***
 Use the "Utilities" package already downloaded in version 4
 

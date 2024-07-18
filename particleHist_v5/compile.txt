@@ -1,0 +1,8 @@
+rm -f main
+export CORSOCXX_UTIL=${HOME}/didattica/corsocxx/y2122
+c++ -Wall -I. -I ${CORSOCXX_UTIL} `root-config --cflags` -o main *cc `root-config --libs`
+
+In WSL (Windows Subsystem for Linux) use the following command:
+g++ -Wall -I. -I ../../ `root-config --cflags` -o hist4 *cc `root-config --libs`
+./hist5 input ../particle_events.txt time tt.root
+./hist5 input ../particle_events.txt plot hist_input.root time hist_input.root
