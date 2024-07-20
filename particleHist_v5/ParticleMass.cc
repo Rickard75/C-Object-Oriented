@@ -9,7 +9,6 @@
 #include "TH1F.h"
 #include "TFile.h"
 #include "TDirectory.h"
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -39,9 +38,18 @@ ParticleMass::~ParticleMass(){
 
 // function to be called at execution start
 void ParticleMass::beginJob() {
-    pList.reserve(2);
-    pCreate( "K0", 0.495, 0.500);
-    pCreate( "Lambda0", 1.115, 1.116);
+
+
+    hTot = new TH1F( "hTot", "hTot", 100, 0.0, 10000.0 );
+
+    pList.reserve(10);
+    //pCreate( "K0", 0.495, 0.500);
+    //pCreate( "Lambda0", 1.115, 1.116);
+    ifstream file ( aInfo->value( "mass" ).c_str() );
+    string name;
+    double mMin, mMax;
+    while (file >> name >> mMin >> mMax) pCreate(name, mMin, mMax);
+    file.close();
     return;
 }
 

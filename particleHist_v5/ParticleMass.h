@@ -33,9 +33,14 @@ class ParticleMass: public AnalysisSteering,
         // function to be called for each event
         void update( const Event& ev ) override;
 
-        
+
+ 
     
     private:
+
+        // total histogram
+        TH1F* hTot;
+        
         // particle object
         struct Particle {
             std::string name;   // element name
