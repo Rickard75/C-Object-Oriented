@@ -72,11 +72,11 @@ double LifetimeFit::get_lifeTimeError() const{
   return particle_lifetime_rms;
 }
 
-// CAN THIS BE DELTED?????????????????????????????????
+
 // return number of selected events
-//unsigned int LifetimeFit::get_nAcc() const{
-//  return nAcc;
-//}
+unsigned int LifetimeFit::get_nAcc() const{
+  return times.size(); // now counting is based upon lifetimes accepted
+}
 
 /*
 The following function is inside Singleton.h:

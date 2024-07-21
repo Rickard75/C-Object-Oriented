@@ -16,7 +16,7 @@ class LifetimeFit {
   void compute();                   // compute mean and rms
 
   
-  unsigned int get_nAcc() const;    // CAN THIS BE DELETED????????????????
+  unsigned int get_nAcc() const;    // NEW: now based on lifetimes accepted
   double get_lifeTime() const;      // return mean lifetime
   double get_lifeTimeError() const; // return error on mean lifetime
  
