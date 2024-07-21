@@ -43,8 +43,8 @@ void ParticleMass::beginJob() {
     hTot = new TH1F( "hTot", "hTot", 100, 0.0, 10000.0 );
 
     pList.reserve(10);
-    //pCreate( "K0", 0.495, 0.500);
-    //pCreate( "Lambda0", 1.115, 1.116);
+    
+    // NEW: getting mass values from file
     ifstream file ( aInfo->value( "mass" ).c_str() );
     string name;
     double mMin, mMax;
@@ -69,6 +69,7 @@ void ParticleMass::endJob() {
         // compute results
         pMean->compute();
         // print results
+        cout << "----------MASS RESULTS---------" << endl;
         cout << "Particle: " << p->name << endl;
         cout << "Mean: " << pMean->get_mean() << endl;
         cout << "RMS: "  << pMean->get_rms()  << endl;
