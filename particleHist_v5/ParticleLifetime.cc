@@ -32,7 +32,7 @@ class ParticleLifetimeFactory: public AnalysisFactory::AbsFactory{
         }
 };
 
-ParticleLifetimeFactory ptf; // global variable to hold an instance of the factory
+static ParticleLifetimeFactory ptf; // global variable to hold an instance of the factory
 
 ParticleLifetime::ParticleLifetime(const AnalysisInfo* info): 
     AnalysisSteering(info){
@@ -43,9 +43,27 @@ ParticleLifetime::~ParticleLifetime(){
 
 // function to be called at execution start
 void ParticleLifetime::beginJob() {
-    pList.reserve(2);
-    pCreate( "K0", 0.495, 0.500, 10.0, 500.0);
-    pCreate( "Lambda0", 1.115, 1.116, 10.0, 1000.0);
+    hTot = new TH1F("htot", "Total decay time histogram;Time [ns];#", 200, 0.0, 1000.0);
+    // now getting datas from file
+    pList.reserve(10);
+    ifstream file ( aInfo->value( "fit" ).c_str() );
+
+    if(!file.is_open()){
+        cout << "Error: unable to open file named:" << aInfo->value("ranges")<< endl;
+        return;
+    }
+
+    string name;
+    double mMin, mMax, tMin, tMax, minScan, maxScan, scanStep;
+    while (file >> name >> mMin >> mMax >> tMin >> tMax >> minScan >> maxScan >> scanStep) {
+        pCreate(name, 
+                mMin, mMax, 
+                tMin, tMax, 
+                minScan, maxScan, scanStep);
+    }
+    //pCreate( "K0", 0.495, 0.500, 10.0, 500.0);
+    //pCreate( "Lambda0", 1.115, 1.116, 10.0, 1000.0);
+    file.close();
     return;
 }
 
@@ -59,14 +77,19 @@ void ParticleLifetime::endJob() {
     // CREATE mode: new file created or overwriting of existing one
     // RECREATE mode:
 
-    for (Particle* p: pList){
+    for (ParticleLifetime::Particle* p: pList){
         // get Particle curve informations: mean, rms, graph
         LifetimeFit*   tMean = p->tMean;
         TH1F*       hMean = p->hMean;
         // compute results
         tMean->compute(); // now does nothing
         // print results
+        cout << endl;
         cout << "Particle: " << p->name << endl;
+        cout << "Mean: " << tMean->get_lifeTime() << endl;
+        cout << "RMS: " << tMean->get_lifeTimeError() << endl;
+        cout << "Accepted events: " << tMean->get_nAcc() << endl;
+        cout << endl;
         
         hMean->Write();
         
@@ -96,10 +119,10 @@ void ParticleLifetime::update(const Event& ev){
 }
 
 // creates graph and values to store for a single Particle histogram
-void ParticleLifetime::pCreate(const string& name, double min_mass, double max_mass,double minTime, double maxTime){
+void ParticleLifetime::pCreate(const string& name, double min_mass, double max_mass,double minTime, double maxTime, double scanMin, double scanMax, double scanStep){
 
     // naming histogram and its axis
-    string labels = ";Time [ns];#"; // axis labels
+    string labels = "Decay time histogram;Time [ns];#"; // axis labels
     string long_name = "time" + name;
     const char* hName = long_name.c_str(); // pointer to long_name
     string title = hName + labels;
@@ -111,8 +134,9 @@ void ParticleLifetime::pCreate(const string& name, double min_mass, double max_m
     // creating TH1F histogram and statistical object
     Particle* p = new Particle;
     p-> name = name;
-    p->tMean = new LifetimeFit(min_mass, max_mass, minTime, maxTime, nBins, 0.0, 0.0); // TO CHECK???????????
+    p->tMean = new LifetimeFit(min_mass, max_mass, minTime, maxTime, scanMin, scanMax, scanStep); 
     p->hMean = new TH1F(hName, hTitle, nBins, minTime, maxTime);
+    p->hMean->SetFillColor( kBlue );
     pList.push_back( p );
 
     return;
