@@ -68,8 +68,6 @@ void ParticleLifetime::endJob() {
         // print results
         cout << "Particle: " << p->name << endl;
         
-        cout << "Number of accepted events: " << tMean->get_nAcc() << endl;
-
         hMean->Write();
         
     }
@@ -113,7 +111,7 @@ void ParticleLifetime::pCreate(const string& name, double min_mass, double max_m
     // creating TH1F histogram and statistical object
     Particle* p = new Particle;
     p-> name = name;
-    p->tMean = new LifetimeFit(min_mass, max_mass);
+    p->tMean = new LifetimeFit(min_mass, max_mass, minTime, maxTime, nBins, 0.0, 0.0); // TO CHECK???????????
     p->hMean = new TH1F(hName, hTitle, nBins, minTime, maxTime);
     pList.push_back( p );
 
