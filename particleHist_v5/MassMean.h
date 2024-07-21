@@ -2,6 +2,7 @@
 #define MassMean_h
 
 class Event;
+class ParticleReco;
 
 class MassMean {
 
