@@ -1,10 +1,9 @@
 #include "MassMean.h"
 #include "Event.h"
 #include "ParticleReco.h"
+#include "Constants.h"
 
 #include <cmath>
-
-double mass( const Event& ev );
 
 // constructor
 MassMean::MassMean( double min, double max ):
