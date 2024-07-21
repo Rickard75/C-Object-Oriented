@@ -2,7 +2,58 @@ rm -f main
 export CORSOCXX_UTIL=${HOME}/didattica/corsocxx/y2122
 c++ -Wall -I. -I ${CORSOCXX_UTIL} `root-config --cflags` -o main *cc `root-config --libs`
 
-In WSL (Windows Subsystem for Linux) use the following command:
+In my WSL (Windows Subsystem for Linux) use the following command:
 g++ -Wall -I. -I ../../ `root-config --cflags` -o hist5 *cc `root-config --libs`
-./hist5 input ../particle_events.txt time tt.root
-./hist5 input ../particle_events.txt plot mm.root time tt.root
+
+./hist5 input ../particle_events.txt time timedata.root fit particleFitters
+
+RESULTS from DATA:
+Particle: K0
+Mean: 89.9841
+RMS: 6.69436
+Accepted events: 414
+
+Particle: Lambda0
+Mean: 239.809
+RMS: 29.5836
+Accepted events: 282
+
+
+
+./hist5 sim 10000 time time.root fit particleFitters
+
+RESULTS from SIMULATION:
+Particle: K0
+Mean: 89.8784
+RMS: 2.0648
+Accepted events: 4371
+
+
+Particle: Lambda0
+Mean: 259.021
+RMS: 8.72234
+Accepted events: 2850
+
+COMPILE and GET BOTH MASS AND TIME RESULTS
+./hist5 input ../particle_events.txt mass massRanges plot massdata.root time timedata2.root fit particleFitters
+----------MASS RESULTS---------
+Particle: K0
+Mean: 0.497614
+RMS: 0.000212889
+Number of accepted events: 470
+----------MASS RESULTS---------
+Particle: Lambda0
+Mean: 1.11568
+RMS: 2.86537e-05
+Number of accepted events: 302
+-----------TIME RESULTS--------------
+Particle: K0
+Mean: 89.9841
+RMS: 6.69436
+Accepted events: 414
+
+-----------TIME RESULTS--------------
+Particle: Lambda0
+Mean: 239.809
+RMS: 29.5836
+Accepted events: 282

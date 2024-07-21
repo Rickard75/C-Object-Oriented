@@ -1,8 +1,6 @@
 ---- Modify Hist_v4 and use dispatcher&observers to handle begin/end job ----
 
 **** Part A ****
-------------------------------CODING HERE------------------------------------
---------------------COMPILES PERFECTLY UNTIL HERE----------------------------
 ***
 Use the "Utilities" package already downloaded in version 4
 
@@ -75,6 +73,8 @@ So, in the "compute" function, do the following:
 Then get mean lifetime and error using the formula given above, 
 getting a, b and c from the functions "a", "b" and "c" of "QuadraticFitter".
  
+--------------------COMPILES PERFECTLY UNTIL HERE----------------------------
+------------------------------CODING HERE------------------------------------
 ***
 In "ParticleLifetime.h,cc"
 - get the mass and time ranges plus the fit parameters from text file 
@@ -98,13 +98,13 @@ EventSource            copy   Hist_v4                copy   Hist_v4
 EventReadFromFile      copy   Hist_v4                copy   Hist_v4
 EventSim               copy   Hist_v4                copy   Hist_v4
 EventDump              copy   Hist_v4                copy   Hist_v4
-ParticleMass           copy   Hist_v4                modify Hist_v4
+ParticleMass           copy   Hist_v4                modify Hist_v4...done
 MassMean               copy   Hist_v4                copy   Hist_v4
 Constants              copy   Hist_v4                copy   Hist_v4
 Utilities              copy   Hist_v4                copy   Hist_v4
 ParticleReco           copy   Hist_v4                copy   Hist_v4
-ProperTime             copy   Hist_v4                copy   Hist_v4
-LifetimeFit            modify Hist_v4                modify Hist_v4
-ParticleLifetime       modify Hist_v4                modify Hist_v4
+ProperTime             copy   Hist_v4                copy   Hist_v4...done
+LifetimeFit            modify Hist_v4                modify Hist_v4...done
+ParticleLifetime       modify Hist_v4                modify Hist_v4...doing
 QuadraticFitter        done                          done
 
