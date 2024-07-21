@@ -32,11 +32,15 @@ void ParticleReco::update( const Event& ev ) {
   // loop over particles
   for (int i=0; i<np; i++){
     const Event::part_ptr party = ev.get_particle(i);
+    // update total momentum
     sum_px += party->px;
     sum_py += party->py;
     sum_pz += party->pz;
+    // update total energy for both mass hypotheses
+    // K0 hypothesis
     sum_eK0 += Utilities::energy (party->px, party->py, party->pz, Constants::massPion);
-    if(party->chg == +1){
+    // L0 hypothesis
+    if(party->chg == +1){  
       sum_eL0 += Utilities::energy (party->px, party->py, party->pz, Constants::massProton);
       pos++;
     }
@@ -73,7 +77,6 @@ void ParticleReco::update( const Event& ev ) {
 ParticleReco::ParticleType ParticleReco::get_type() {
   // check for new event and return result
   check();
-  
   return decay_type;
 }
 
