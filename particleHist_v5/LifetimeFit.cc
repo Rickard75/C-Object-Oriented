@@ -6,8 +6,6 @@
 
 #include <cmath>
 
-double mass( const Event& ev );
-
 // constructor
 LifetimeFit::LifetimeFit( double min, double max, double min_time, double max_time, double min_scan, double max_scan, double scan_step ):
  // initializations
@@ -46,11 +44,11 @@ bool LifetimeFit::add( const Event& ev ) {
 void LifetimeFit::compute() {
   QuadraticFitter* qf = new QuadraticFitter(); // creating a QuadraticFitter object
   for (double t_s = min_scan; t_s <= max_scan; t_s += scan_step){
-    double likelihood = 0; // initializing likelihood
-    double t_i = 0; // initializing single time value
+    double likelihood = 0; 
+    double t_i = 0; 
     for (unsigned int i=0; i<times.size(); i++){
       t_i = times[i];
-      likelihood += (t_i/t_s) + log(t_s) + log( exp(-min_time/t_s) - exp(max_time/t_s ) );
+      likelihood += (t_i/t_s) + log(t_s) + log( exp(-min_time/t_s) - exp(-max_time/t_s ) );
       
       qf->add(t_s, likelihood);
     }
@@ -58,7 +56,7 @@ void LifetimeFit::compute() {
   particle_lifetime_mean = - qf->b() / (2*qf->c()); // lifetime mean
   double &min = particle_lifetime_mean;
   double min_likelihood = qf->a() + qf->b()*min + qf->c()*(pow(min,2)); // useless but computed for completeness
-  particle_lifetime_rms = sqrt( 1/( 2*qf->c() ) ); // lifetime rms
+  particle_lifetime_rms = qf->c() > 0.0 ? sqrt( 1/( 2*qf->c() ) ) : 0.0; // lifetime rms
   
 }
 
