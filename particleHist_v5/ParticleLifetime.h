@@ -10,7 +10,7 @@
 #include <string>
 
 class Event;
-class MassMean;
+class LifetimeFit;
 class AnalysisInfo;
 
 
@@ -37,6 +37,10 @@ class ParticleLifetime: public AnalysisSteering,
         
     
     private:
+
+        // total histogram
+        TH1F* hTot;
+
         // particle object
         struct Particle {
             std::string  name;   // element name
@@ -48,7 +52,10 @@ class ParticleLifetime: public AnalysisSteering,
         std::vector<Particle*> pList;
 
         // creates graph and values to store for a single Particle Curve
-        void pCreate (const std::string& name, double min_mass, double max_mass, double timeMin, double timeMax);
+        void pCreate (const std::string& name, 
+                      double min_mass, double max_mass, 
+                      double timeMin, double timeMax,
+                      double scanMin, double scanMax, double scanStep);
         
 };
 

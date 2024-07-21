@@ -84,7 +84,7 @@ void ParticleLifetime::endJob() {
         // compute results
         tMean->compute(); // now does nothing
         // print results
-        cout << endl;
+        cout << "-----------TIME RESULTS--------------"<< endl;
         cout << "Particle: " << p->name << endl;
         cout << "Mean: " << tMean->get_lifeTime() << endl;
         cout << "RMS: " << tMean->get_lifeTimeError() << endl;
@@ -122,7 +122,7 @@ void ParticleLifetime::update(const Event& ev){
 void ParticleLifetime::pCreate(const string& name, double min_mass, double max_mass,double minTime, double maxTime, double scanMin, double scanMax, double scanStep){
 
     // naming histogram and its axis
-    string labels = "Decay time histogram;Time [ns];#"; // axis labels
+    string labels = " - Decay time histogram;Time [ns];#"; // axis labels
     string long_name = "time" + name;
     const char* hName = long_name.c_str(); // pointer to long_name
     string title = hName + labels;
