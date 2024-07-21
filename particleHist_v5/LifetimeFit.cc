@@ -2,6 +2,7 @@
 #include "Event.h"
 #include "ParticleReco.h"
 #include "ProperTime.h"
+#include "QuadraticFitter.h"
 
 #include <cmath>
 
@@ -43,6 +44,32 @@ bool LifetimeFit::add( const Event& ev ) {
 
 // compute mean and rms
 void LifetimeFit::compute() {
+  QuadraticFitter* qf = new QuadraticFitter(); // creating a QuadraticFitter object
+  for (double t_s = min_scan; t_s <= max_scan; t_s += scan_step){
+    double likelihood = 0; // initializing likelihood
+    double t_i = 0; // initializing single time value
+    for (unsigned int i=0; i<times.size(); i++){
+      t_i = times[i];
+      likelihood += (t_i/t_s) + log(t_s) + log( exp(-min_time/t_s) - exp(max_time/t_s ) );
+      
+      qf->add(t_s, likelihood);
+    }
+  }
+  particle_lifetime_mean = - qf->b() / (2*qf->c()); // lifetime mean
+  double &min = particle_lifetime_mean;
+  double min_likelihood = qf->a() + qf->b()*min + qf->c()*(pow(min,2)); // useless but computed for completeness
+  particle_lifetime_rms = sqrt( 1/( 2*qf->c() ) ); // lifetime rms
+  
+}
+
+// return lifetime mean
+double LifetimeFit::get_lifeTime() const{
+  return particle_lifetime_mean;
+}
+
+// return lifetime rms
+double LifetimeFit::get_lifeTimeError() const{
+  return particle_lifetime_rms;
 }
 
 // CAN THIS BE DELTED?????????????????????????????????
