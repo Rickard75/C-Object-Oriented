@@ -35,6 +35,7 @@ Move all the source files to those directories:
   ParticleLifetime.h,cc
 
 ***
+------------------------------------CODING HERE------------------------------------------
 Update the paths in all the #include instructions
 
 ***

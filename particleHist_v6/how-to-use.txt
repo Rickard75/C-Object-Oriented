@@ -1,0 +1,27 @@
+
+FIRST DO:
+
+export LD_LIBRARY_PATH=`pwd`:$LD_LIBRARY_PATH
+
+which adds current directory to the variable LD_LIBRARY_PATH,
+ensuring thath sharable directory are found previous than those 
+previously specified
+THEN:
+------------------------DUMP INFORMATION----------------------------------------
+./runDump input ../particle_events.txt dump (checked working)
+./runDump sim 5000 dump (checked working)
+
+-------------------------------PLOT MASS-----------------------------------------
+        (Necessary to specify the masses ranges->created 'massRanges' file)
+./runMass input ../particle_events.txt mass massRanges plot massHist_input.root (corrected keyword "mass")
+./runMass sim 3000 mass massRanges plot massHist_sim.root (checked working)
+
+-------------------------------PLOT TIME-----------------------------------------
+                (Necessary specify the lifetime fit parameters->created 'particleFitters' file)
+./runTime input ../particle_events.txt fit particleFitters time timeHist_input.root (checked working)
+./runTime sim 10000 fit particleFitters time timeHist_sim.root (checked working)
+
+-------------------------------PLOT ALL------------------------------------------
+            (Using 'massRanges' and 'particleFitters' files)
+./runAll input ../particle_events.txt mass massRanges fit particleFitters plot allPlot_input.root time allTime_input.root (checked working)
+./runAll sim 10000 mass massRanges fit particleFitters plot allPlot_sim.root time allTime_sim.root (checked working)
