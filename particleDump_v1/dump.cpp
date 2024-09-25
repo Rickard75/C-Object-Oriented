@@ -9,7 +9,7 @@ using namespace std;
                      just to compare without compile the code I've added
                      a print .txt file where data are written as a copy
 */
-ofstream out_dump("dump.txt");
+ofstream out_dump("dump.txt"); // creation of the output file
 
 void dump(int id_event,
           int N,

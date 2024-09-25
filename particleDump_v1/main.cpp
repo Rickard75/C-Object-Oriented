@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
     ifstream in_file (nome_file);
 
     //declare event variables to be read from ifstream in the loop
-    int id_event=1;                     //a trial value
+    int id_event = 1;                     //a trial value
     int nParticles;
     float x = 0.0, y = 0.0, z = 0.0;    //the event takes place in a SINGLE point of the 3D space
     int charges[10];                    //10 is max number of particle interacting in 1 event

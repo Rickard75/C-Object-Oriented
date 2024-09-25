@@ -26,15 +26,14 @@ int read(ifstream &in_file,
     int N;
     in_file >> N;
 
-    //CHARGE and MOMENTUM
+    //CHARGE and MOMENTA of PARTICLES
     for(int i=0;i<N;i++){ //N is #particle of SINGLE event
         
         in_file >> *(charges+i); //object pointed by the array "charges" at position "i"
 
-        in_file >> *(pX + i);
-        in_file >> *(pY + i);
-        in_file >> *(pZ + i);
-        
+        in_file >> *(pX + i); // same as pX[i]
+        in_file >> *(pY + i); // same as pY[i]
+        in_file >> *(pZ + i); // same as pZ[i]
     }
     
     return N;
