@@ -9,7 +9,7 @@ void clear (const Event* ev){
     for(int i=0;i<dim;i++){
         delete ev->p_PList[i]; //deleting Particle one by one
     }
-    delete[] ev->p_PList; //deleting PoP
+    delete[] ev->p_PList; //deleting PoP (aka matrix of particles)
 
     delete ev; //deleting Event
 
