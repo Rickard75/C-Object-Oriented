@@ -22,8 +22,6 @@
 #include "Event.h"
 using namespace std;
 
-//struct Event;
-
 //FORWARD FUNCTION DECLARATION
 Event* read( ifstream& file );  //reading the event from file
 void dump(const Event* ev);           //printing values on screen
@@ -43,6 +41,7 @@ int main(int argc, char* argv[]){
   double mean = 0.0;
   double rms = 0.0;
 
+  // data for K0 particle
   double mini = 0.490;
   double mantikos = 0.505;
 
@@ -54,20 +53,21 @@ int main(int argc, char* argv[]){
     clear( ev );
   }
 
-  // calculate rescaled mean
+  // compute invariant mean mass for K0
   mean = (mass_sum * 1.0)/ok_events;
 
-  //calculate rms
-  //double var = ((sqr_sum*1.0)/ok_events)-pow(mean,2);
-  double var = (((sqr_sum*1.0)/(double)ok_events)-(mean*mean));
-  //rms = sqrt(var);
+  // compute rms
+  double var = ((sqr_sum*1.0)/ok_events)-pow(mean,2);
   var > 0 ? rms = sqrt(var) : rms=-1;
 
+  // rescale mean
   mean += mini;
   
   // results
-  cout << "MEAN: " << mean << "\nRMS: " << rms << "\nOK EVENTS: " << ok_events << endl;
-  cout << "VAR: " << var << endl;
+  cout << "MEAN: " << mean << 
+          "\nRMS: " << rms << 
+          "\nOK EVENTS: " << ok_events <<
+          "\nVAR: " << var << endl;
   return 0;
 
 }

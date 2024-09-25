@@ -24,9 +24,6 @@ Event* read( ifstream& file ) { //'file' is a new nickname for 'in_file'
     file >> numP; // getting private member nP of object evento
     //evento->get_nParticles() = numP; //gives error, can't assign value to call to function
     
-
-    // ---------------------------------------------------------SONO QUI-------------------------------------------------------------------
-
     //  call the "add" function in the loop reading particles.
     int charge = 0;
     double px = 0.0;

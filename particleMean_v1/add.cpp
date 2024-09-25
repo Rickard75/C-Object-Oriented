@@ -17,10 +17,8 @@ bool add(const Event& ev, double min, double max, double& mass_sum, double& sqr_
         my_mass -= min;
 
         // updating sums
-        mass_sum += my_mass;
-        sqr_sum  += (my_mass*my_mass);
-        //std::cout << sqr_sum << std::endl;
-        //sqr += my_mass*my_mass;
+        mass_sum += my_mass;            // sum of invariant mass
+        sqr_sum  += (my_mass*my_mass);  // sum of squared invariant mass
         return true;
     }
     return false;

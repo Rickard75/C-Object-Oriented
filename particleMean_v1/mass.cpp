@@ -5,13 +5,11 @@ using namespace std;
 // compute energy from momentum x,y,z components and invariant mass
 double energy(double pX, double pY, double pZ, double m){
     return sqrt(pow(pX,2.0)+pow(pY,2.0)+pow(pZ,2.0)+pow(m,2.0));
-    //return sqrt(pX*pX + pY*pY + pZ*pZ + m*m);
 }
 
 // compute invariant mass from momentum x,y,z components and energy
 double invmass(double pX, double pY, double pZ, double e){
     double m2 = pow(e,2.0)-pow(pX,2.0)-pow(pY,2.0)-pow(pZ,2.0);
-    //double m2 = e*e-pX*pX-pY*pY-pZ*pZ;
     double m = m2 > 0 ? sqrt(m2) : -1;
     return m;
 }
@@ -22,28 +20,24 @@ const double massProton  = 0.938272;    // GeV/c^2
 const double massK0      = 0.497611;    // GeV/c^2
 const double massLambda0 = 1.115683;    // GeV/c^2
 
+// This function computes invariant mass of event
 double mass(const Event &ev) {
 
-  // retrieve particles in the event
-  typedef const Particle* part_ptr; // defines a pointer
-  const part_ptr* particles = ev.p_PList; //defines a PoP (usable here)
-
-  // variables to loop over particles
+  // retrieve Particle PoP and number of particles
+  typedef const Particle* part_ptr;                 // column of PoP "matrix" (see file .svg in particleDump_v2)
+  const part_ptr* particles = ev.p_PList;           // PoP "matrix" (usable here)
   int np = ev.nP;
 
-  // positive / negative track counters, where declares 2 pointers
+  // initialize counters, momentum and energy sums
   int pos = 0;
   int neg = 0;
-
-  // variables for momentum sums
   double sum_px = 0.0, sum_py = 0.0, sum_pz = 0.0;
-  // variables for energy sums, for K0 and Lambda0
   double sum_eK0 = 0.0, sum_eL0 = 0.0;
 
   // loop over particles - momenta
   for ( int i=0; i<np; i++ ) {
     // get particle pointer
-    const part_ptr party = particles[i]; //single particle pointer = PoP[i]
+    const part_ptr party = particles[i]; //single Particle pointer = PoP[i] = single column of PoP "matrix"
     // update momentum sums
     sum_px += party->px;
     sum_py += party->py;
