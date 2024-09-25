@@ -18,8 +18,8 @@ bool add(const Event& ev, double min, double max, double& mass_sum, double& sqr_
 
         // updating sums
         mass_sum += my_mass;
-        sqr_sum += (my_mass*my_mass);
-        std::cout << sqr_sum << std::endl;
+        sqr_sum  += (my_mass*my_mass);
+        //std::cout << sqr_sum << std::endl;
         //sqr += my_mass*my_mass;
         return true;
     }

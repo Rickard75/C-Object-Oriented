@@ -16,11 +16,13 @@
         - 
 */
 
-#include<iostream>
-#include<cmath>
-#include<fstream>
+#include <iostream>
+#include <cmath>
+#include <fstream>
 #include "Event.h"
 using namespace std;
+
+//struct Event;
 
 //FORWARD FUNCTION DECLARATION
 Event* read( ifstream& file );  //reading the event from file
@@ -54,7 +56,6 @@ int main(int argc, char* argv[]){
 
   // calculate rescaled mean
   mean = (mass_sum * 1.0)/ok_events;
-  mean += mini;
 
   //calculate rms
   //double var = ((sqr_sum*1.0)/ok_events)-pow(mean,2);
@@ -62,6 +63,8 @@ int main(int argc, char* argv[]){
   //rms = sqrt(var);
   var > 0 ? rms = sqrt(var) : rms=-1;
 
+  mean += mini;
+  
   // results
   cout << "MEAN: " << mean << "\nRMS: " << rms << "\nOK EVENTS: " << ok_events << endl;
   cout << "VAR: " << var << endl;
