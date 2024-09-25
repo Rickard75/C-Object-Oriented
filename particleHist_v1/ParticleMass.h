@@ -35,10 +35,10 @@ class ParticleMass: public AnalysisSteering {
     
     private:
 
-        // list of pointers to ParticleCurve object(2 since only K0 and Lambda0)
+        // list of pointers to Particle object(2 since only K0 and Lambda0)
         std::vector<Particle*> pList;
 
-        // creates graph and values to store for a single Particle Curve
+        // creates graph and values to store for a single Particle
         void pCreate (const std::string& name, double min_mass, double max_mass);
         
 };
