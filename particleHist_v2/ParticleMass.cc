@@ -29,7 +29,7 @@ void ParticleMass::endJob() {
 
     // creation of ROOT file
     TDirectory* currentDir = gDirectory;
-    TFile* file = new TFile("hist.root", "CREATE");
+    TFile* file = new TFile("hist2.root", "CREATE");
 
     for (Particle* p: pList){
         // get Particle curve informations: mean, rms, graph

@@ -1,0 +1,34 @@
+COMPILARE, ESEGUIRE, RUNNARE CODICE + ROOT
+Sia "path" il percorso che contiene i codici:
+
+compile:    path> g++ -Wall -o hist1 *.cc `root-config --cflags --libs`
+run:        path> ./hist1 input ../particle_events.txt
+            path> ./hist1 sim 1000
+
+            -- creazione file "hist.root" --
+
+display:    // aprire file root senza intestazione
+            path> root -l hist.root
+
+            // mostrare contenuto del file
+            root> .ls
+            // mostrare istogrammi
+            K0->Draw()
+            Lambda0->Draw()
+
+Summary : 
+- one base-analyzer                     : AnalysisSteering
+- two derived-analyzer                  : EventDump e ParticleMass (with ROOT graph for each Particle)
+- one base-event                        : EventSource
+- two derived-event                     : EventSim, EventReadFromFile
+- to compute invariant mass mean        : MassMean (now with ROOT graph)
+- to compute invariant mass             : mass.cc
+- to store costants                     : Costants
+- to store simple functions             : Utilities  
+- to handle events                      : Event
+- to handle input options               : AnalysisInfo, SourceFactory
+
+notes about "mass" stuff:
+-       ParticleMass manages the mass of the single particle with ROOT graph
+-       MassMean compute mean over all the event of a specific decay (K0 or L0); it is used in ParticleMass
+-       mass.cc compute invariant mass of a single decay; it is used in MassMean
