@@ -43,7 +43,7 @@ class Event {
 
   // particles: vector of pointers to Particles
   // particle.size() is the new nP
-  std::vector<Particle*> particles; 
+  std::vector<Particle*> particles; // PoP "matrix" is now VoP "matrix"
 
 };
 
