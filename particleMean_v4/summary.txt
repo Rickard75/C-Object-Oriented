@@ -1,0 +1,14 @@
+compile : g++ -Wall -o mean4 *.cc
+run     : ./mean4 input ../particle_events.txt
+        : ./mean4 sim 1000
+
+Summary : 
+- one base-analyzer                     : AnalysisSteering
+- two derived-analyzer                  : EventDump e ParticleMass
+- one base-event                        : EventSource
+- two derived-event                     : EventSim, EventReadFromFile
+- to compute invariant mass mean        : MassMean      
+- to compute invariant mass             : mass.cc
+- to store costants                     : Costants
+- to store simple functions             : Utilities  
+- to handle EventSim                    : Event

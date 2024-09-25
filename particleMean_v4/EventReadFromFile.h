@@ -28,7 +28,7 @@ class EventReadFromFile: public EventSource {
   // input file
   std::ifstream* file;
 
-  // read and event
+  // read an event
   const Event* readFile();
 
 };

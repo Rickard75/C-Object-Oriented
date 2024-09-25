@@ -15,7 +15,7 @@ class EventSource {
   virtual ~EventSource();
 
   // get an event
-  virtual const Event* get() = 0;
+  virtual const Event* get() = 0; // pure virtual function
 
 };
 
