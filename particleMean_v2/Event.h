@@ -18,7 +18,7 @@ class Event {
     int chg;
     double px, py, pz;
   };
-  typedef const Particle* part_ptr;
+  typedef const Particle* part_ptr; // column of PoP "matrix" (v. file .svg in particleDump_v2)
 
   // OTHER FUNCTIONS
   // add a particle to the event
@@ -42,7 +42,7 @@ class Event {
 
   // particles: number and array of pointers (PoP)
   unsigned int nP;
-  part_ptr* particles; 
+  part_ptr* particles;  // PoP, aka "matrix"
 
 };
 

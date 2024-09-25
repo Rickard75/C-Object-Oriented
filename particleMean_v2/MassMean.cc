@@ -31,10 +31,10 @@ void MassMean::add( const Event& ev ) {
   // update number of events and sums
   double my_mass = mass(ev);
   if (min_mass <= my_mass && my_mass <= max_mass){
-    my_mass -= get_min();
+    my_mass -= get_min();       // rescaling
     
-    sum_mass += my_mass;
-    sum_sqr += my_mass*my_mass;
+    sum_mass += my_mass;        // update invariant mass sum
+    sum_sqr += my_mass*my_mass; // update squared invariant mass sum
     nAcc++;
   }
 
@@ -43,7 +43,7 @@ void MassMean::add( const Event& ev ) {
 
 // compute mean and rms
 void MassMean::compute() {
-  double my_mean = (this->sum_mass*1.0)/(this->nAcc);
+  double my_mean = (this->sum_mass*1.0)/(this->nAcc); 
   this->mean = my_mean;
   this->rms = sqrt((this->sum_sqr*1.0)/(this->nAcc)-pow(my_mean, 2.0));
 
