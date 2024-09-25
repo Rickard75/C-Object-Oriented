@@ -11,4 +11,4 @@ Summary :
 - to compute invariant mass             : mass.cc
 - to store costants                     : Costants
 - to store simple functions             : Utilities  
-- to handle EventSim                    : Event
+- to handle events                      : Event
