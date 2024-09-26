@@ -57,3 +57,48 @@ Particle: Lambda0
 Mean: 239.809
 RMS: 29.5836
 Accepted events: 282
+
+COMPILARE, ESEGUIRE, RUNNARE CODICE + ROOT
+Sia "path" il percorso che contiene i codici:
+In my WSL (Windows Subsystem for Linux) use the following command:
+
+compile:    path> g++ -Wall -I. -I ../../ `root-config --cflags` -o hist4 *cc `root-config --libs`
+
+run:        path> ./hist4 input ../particle_events.txt time timedata.root
+            path> ./hist1 sim 1000
+
+            -- creazione file "hist.root" --
+
+display:    // aprire file root senza intestazione
+            path> root -l hist.root
+
+            // mostrare contenuto del file
+            root> .ls
+            // mostrare istogrammi
+            K0->Draw()
+            Lambda0->Draw()
+
+Summary : 
+- one base-analyzer                                 : AnalysisSteering
+- two derived-analyzer                              : EventDump e ParticleMass (with ROOT graph for each Particle)
+- one base-event                                    : EventSource, SourceFactory
+- two derived-event                                 : EventSim, EventReadFromFile
+- to compute invariant mass mean                    : MassMean (with ROOT graph)
+- to compute invariant mass                         : mass.cc (now DELETED)
+- to store costants                                 : Costants
+- to store simple functions                         : Utilities  
+- to handle events                                  : Event
+- to handle input options                           : AnalysisInfo
+- to handle generic analyzers                       : AnalysisFactory
+- contains code of ex "mass.cc"                     : ParticleReco      
+- to handle time graph and calculations             : ParticleLifetime  
+- compute proper time using "mass" code + formulas  : ProperTime        
+- here does nothing, only add event                 : LifetimeFit       
+- contains info about mass ranges                   : massRanges        !NEW!
+- contains info about fitting                       : particleFitters   !NEW!
+- to compute a quadratic fit                        : QuadraticFitter   !NEW!
+
+notes about "mass" stuff:
+-       ParticleMass manages the mass of the single particle with ROOT graph
+-       MassMean compute mean over all the event of a specific decay (K0 or L0); it is used in ParticleMass
+-       mass.cc compute invariant mass of a single decay; it is used in MassMean
